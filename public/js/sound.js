@@ -1,4 +1,4 @@
-
+const context = new (window.AudioContext || window.webkitAudioContext)();
 class Sound {
   constructor(context) {
     this.context = context;
