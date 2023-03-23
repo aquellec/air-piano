@@ -36,7 +36,6 @@ var btn_status = "inactive";
 
 button.onclick = function () {
   if (btn_status == "inactive") {
-    getAudioContext().resume();
     start();
   } else if (btn_status == "recording") {
     stop();
