@@ -1,4 +1,3 @@
-const context = new (window.AudioContext || window.webkitAudioContext)();
 
 class Sound {
   constructor(context) {
@@ -12,8 +11,6 @@ class Sound {
     this.oscillator.connect(this.gainNode);
     this.gainNode.connect(this.context.destination);
     this.oscillator.type = "sine";
-
-    getAudioContext().resume();
   }
 
   play(value, time) {

@@ -33,9 +33,11 @@ if (navigator.mediaDevices.getUserMedia === undefined) {
 }
 
 var btn_status = "inactive";
+const context = null
 
 button.onclick = function () {
   if (btn_status == "inactive") {
+    context = new (window.AudioContext || window.webkitAudioContext)();
     start();
   } else if (btn_status == "recording") {
     stop();
@@ -98,7 +100,6 @@ function roundedRect(ctx, x, y, width, height, radius, fill) {
 }
 
 function listen() {
-  console.log("cc");
   const notesRecorded = new Sound(context);
   const now = context.currentTime;
   recordedNotes.forEach((i) => notesRecorded.play(i.frequency, now + i.time));
