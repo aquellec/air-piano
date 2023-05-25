@@ -1,39 +1,62 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8">
-  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/control_utils/control_utils.js" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js" crossorigin="anonymous"></script>
-  <link href="css/styles.css" rel="stylesheet" lang="text/css"/>
-</head>
+  <head>
+    <meta charset="utf-8" />
+    <script
+      src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@mediapipe/control_utils/control_utils.js"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js"
+      crossorigin="anonymous"
+    ></script>
+    <link href="css/styles.css" rel="stylesheet" lang="text/css" />
+  </head>
 
-<body>
-  <div class="container">
-    <video class="input_video"></video>
-    <canvas class="output_canvas"></canvas>
-    <div class="recorder_wrapper">
-      <div class="recorder">
-          <button class="record_btn" id="button"></button>
-          <p id="msg_box"></p>
-          <div id="messages"></div>
-      </div>
-    </div>
-    <button class="btn btn-gallery" onclick="galleryModalShow()">Bibliothèque</button>
-    <div id="galleryModal">
-      <div data-keyboard="false" data-backdrop="static">
-        <button class="close" onclick="galleryModalHide()"></button>
-        <h2>Liste des enregistrements</h2>
-        <div id="gallery">
-
+  <body>
+    <div class="popup-container">
+      <div class="popup">
+        <div>
+          <p>
+            Vous allez découvrir mon air piano qui se fait qui capte les
+            mouvement de la main avec la caméra
+          </p>
+          <button class="btn btn-popup" onclick="hidePopup()">C'est parti !</button>
         </div>
       </div>
     </div>
-  </div>
-  <script src="/socket.io/socket.io.js"></script>
-  <script src="js/sound.js"></script>
-  <script src="js/record.js"></script>
-  <script src="js/main.js"></script>
-</body>
+    <div class="container">
+      <video class="input_video"></video>
+      <canvas class="output_canvas"></canvas>
+      <div class="recorder_wrapper">
+        <div class="recorder">
+          <button class="record_btn" id="button"></button>
+          <p id="msg_box"></p>
+          <div id="messages"></div>
+        </div>
+      </div>
+      <button class="btn btn-gallery" onclick="galleryModalShow()">
+        Bibliothèque
+      </button>
+      <div id="galleryModal">
+        <div data-keyboard="false" data-backdrop="static">
+          <button class="close" onclick="galleryModalHide()"></button>
+          <h2>Liste des enregistrements</h2>
+          <div id="gallery"></div>
+        </div>
+      </div>
+    </div>
+    <script src="../node_modules/socket.io-client/dist/socket.io.js"></script>
+    <script src="js/sound.js"></script>
+    <script src="js/record.js"></script>
+    <script src="js/main.js"></script>
+  </body>
 </html>
