@@ -228,6 +228,7 @@ const hands = new Hands({
     return `https://cdn.jsdelivr.net/npm/@mediapipe/hands/${file}`;
   },
 });
+
 hands.setOptions({
   selfieMode: true,
   maxNumHands: 2,
@@ -264,12 +265,21 @@ function galleryModalHide() {
   isModalOpen = false;
 }
 
-socket.on('messageFromServer', function(msg) {
-  galleryRecorded.push(msg)
-  var item = document.createElement('button');
+socket.on("messageFromServer", function (msg) {
+  galleryRecorded.push(msg);
+  var item = document.createElement("button");
   item.setAttribute("onclick", `play(${nbItemGallery})`);
   item.setAttribute("class", "btn");
-  item.textContent = `Enregistrement ${nbItemGallery}`
+  item.textContent = `Enregistrement ${nbItemGallery}`;
   gallery.appendChild(item);
-  nbItemGallery++
+  nbItemGallery++;
 });
+
+function play(nbItemGallery) {
+  const now = context.currentTime;
+  const itemIndex = nbItemGallery - 1;
+  galleryRecorded[itemIndex].forEach((note) => {
+    const noteSound = new Sound(context);
+    noteSound.play(note.frequency, now + note.time);
+  });
+}

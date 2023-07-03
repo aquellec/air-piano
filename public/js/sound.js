@@ -16,7 +16,6 @@ class Sound {
   play(value, time) {
     this.oscillator.frequency.value = value;
     this.gainNode.gain.setValueAtTime(1, this.context.currentTime);
-
     this.oscillator.start(time);
     this.stop(time);
   }
@@ -26,3 +25,5 @@ class Sound {
     this.oscillator.stop(time + 1);
   }
 }
+
+module.exports = Sound;
